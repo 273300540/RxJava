@@ -18,27 +18,27 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Provides a mechanism for receiving push-based notifications.
- * <p>
+ *     <p>Observer通过ObservableSource#subscribe的方法用于订阅ObservableSource时,ObservableSource使用Disposable调用onSubscribe,然后ObservableSource可能任意次数调用Observer</p><p>
  * When an {@code Observer} is subscribed to an {@link ObservableSource} through the {@link ObservableSource#subscribe(Observer)} method,
  * the {@code ObservableSource} calls {@link #onSubscribe(Disposable)}  with a {@link Disposable} that allows
  * disposing the sequence at any time, then the
  * {@code ObservableSource} may call the Observer's {@link #onNext} method any number of times
  * to provide notifications. A well-behaved
  * {@code ObservableSource} will call an {@code Observer}'s {@link #onComplete} method exactly once or the {@code Observer}'s
- * {@link #onError} method exactly once.
+ * {@link #onError} method exactly once.     <p>ObservableSource会调用Observer的onComplete或者onError 有且一次</p>
  * <p>
  * Calling the {@code Observer}'s method must happen in a serialized fashion, that is, they must not
  * be invoked concurrently by multiple threads in an overlapping fashion and the invocation pattern must
  * adhere to the following protocol:
  * <pre><code>    onSubscribe onNext* (onError | onComplete)?</code></pre>
- * <p>
+ * <p> 同一个Observer Subscribing 多个ObservableSource 是不被推荐的</p><p>
  * Subscribing an {@code Observer} to multiple {@code ObservableSource}s is not recommended. If such reuse
  * happens, it is the duty of the {@code Observer} implementation to be ready to receive multiple calls to
  * its methods and ensure proper concurrent behavior of its business logic.
  * <p>
  * Calling {@link #onSubscribe(Disposable)}, {@link #onNext(Object)} or {@link #onError(Throwable)} with a
  * {@code null} argument is forbidden.
- * <p>
+ * <p>onXXX方法的方法除了以下情况需要避免抛出runtime exception,</p><p>
  * The implementations of the {@code onXXX} methods should avoid throwing runtime exceptions other than the following cases
  * (see <a href="https://github.com/reactive-streams/reactive-streams-jvm#2.13">Rule 2.13</a> of the Reactive Streams specification):
  * <ul>
@@ -75,7 +75,7 @@ import io.reactivex.disposables.Disposable;
  */
 public interface Observer<T> {
 
-    /**
+    /** <p>为Observer提供同步(在onNext内部)和异步方式取消和Observable的连接</p>
      * Provides the Observer with the means of cancelling (disposing) the
      * connection (channel) with the Observable in both
      * synchronous (from within {@link #onNext(Object)}) and asynchronous manner.
@@ -100,7 +100,7 @@ public interface Observer<T> {
 
     /**
      * Notifies the Observer that the {@link Observable} has experienced an error condition.
-     * <p>
+     * <p>如果Observable调用该方法,不会再调用任何onNext或者onComplete</p><p>
      * If the {@link Observable} calls this method, it will not thereafter call {@link #onNext} or
      * {@link #onComplete}.
      *

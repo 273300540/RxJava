@@ -15,7 +15,7 @@ package io.reactivex.internal.fuseable;
 
 import io.reactivex.ObservableSource;
 
-/**
+/**   <p>接口表面该实现有上有ObservableSource</p>
  * Interface indicating the implementor has an upstream ObservableSource-like source available
  * via {@link #source()} method.
  *

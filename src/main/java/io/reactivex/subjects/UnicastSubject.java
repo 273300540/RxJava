@@ -28,7 +28,7 @@ import io.reactivex.internal.fuseable.SimpleQueue;
 import io.reactivex.internal.observers.BasicIntQueueDisposable;
 import io.reactivex.internal.queue.SpscLinkedArrayQueue;
 
-/**
+/**    <p>subject 入队events,直到有单个Observer订阅它</p>
  * A Subject that queues up events until a single {@link Observer} subscribes to it, replays
  * those events to it until the {@code Observer} catches up and then switches to relaying events live to
  * this single {@code Observer} until this {@code UnicastSubject} terminates or the {@code Observer} unsubscribes.
@@ -196,7 +196,7 @@ public final class UnicastSubject<T> extends Subject<T> {
         return new UnicastSubject<T>(capacityHint, true);
     }
 
-    /**
+    /**    <p>使用给定buffer capacity 创建UnicastSubject</p>
      * Creates an UnicastSubject with the given internal buffer capacity hint and a callback for
      * the case when the single Subscriber cancels its subscription.
      *
@@ -332,7 +332,7 @@ public final class UnicastSubject<T> extends Subject<T> {
         if (done || disposed) {
             return;
         }
-        queue.offer(t);
+        queue.offer(t);//添加到队列
         drain();
     }
 

@@ -20,7 +20,7 @@ import io.reactivex.internal.disposables.DisposableHelper;
 import io.reactivex.internal.fuseable.QueueDisposable;
 import io.reactivex.plugins.RxJavaPlugins;
 
-/**
+/**    <p></p>
  * Base class for a fuseable intermediate observer.
  * @param <T> the upstream value type
  * @param <R> the downstream value type

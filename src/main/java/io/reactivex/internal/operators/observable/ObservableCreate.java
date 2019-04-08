@@ -33,7 +33,7 @@ public final class ObservableCreate<T> extends Observable<T> {
 
     @Override
     protected void subscribeActual(Observer<? super T> observer) {
-        CreateEmitter<T> parent = new CreateEmitter<T>(observer);
+        CreateEmitter<T> parent = new CreateEmitter<T>(observer);//原始observer
         observer.onSubscribe(parent);
 
         try {

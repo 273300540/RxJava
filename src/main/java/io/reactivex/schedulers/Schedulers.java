@@ -20,7 +20,7 @@ import io.reactivex.plugins.RxJavaPlugins;
 
 import java.util.concurrent.*;
 
-/**
+/**    <p>静态工厂方法 返回标准的调度实例</p>
  * Static factory methods for returning standard Scheduler instances.
  * <p>
  * The initial and runtime values of the various scheduler types can be overridden via the

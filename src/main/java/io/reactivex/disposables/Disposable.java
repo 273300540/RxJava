@@ -16,7 +16,7 @@ package io.reactivex.disposables;
  * Represents a disposable resource.
  */
 public interface Disposable {
-    /**
+    /**    <p>处置资源,操作必须幂等</p>
      * Dispose the resource, the operation should be idempotent.
      */
     void dispose();

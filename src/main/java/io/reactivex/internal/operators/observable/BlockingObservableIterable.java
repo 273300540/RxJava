@@ -34,7 +34,7 @@ public final class BlockingObservableIterable<T> implements Iterable<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<T> iterator() {//迭代器,每个subscribe
         BlockingObservableIterator<T> it = new BlockingObservableIterator<T>(bufferSize);
         source.subscribe(it);
         return it;

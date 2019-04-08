@@ -14,7 +14,7 @@ package io.reactivex;
 
 import io.reactivex.annotations.*;
 
-/**
+/**    <p>表示基本的非背压的Observable</p>
  * Represents a basic, non-backpressured {@link Observable} source base interface,
  * consumable via an {@link Observer}.
  *
@@ -23,7 +23,7 @@ import io.reactivex.annotations.*;
  */
 public interface ObservableSource<T> {
 
-    /**
+    /**    <p>给定Observer订阅该ObservableSource实例</p>
      * Subscribes the given Observer to this ObservableSource instance.
      * @param observer the Observer, not null
      * @throws NullPointerException if {@code observer} is null

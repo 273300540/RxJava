@@ -49,14 +49,14 @@ public final class ObservableBuffer<T, U extends Collection<? super T>> extends 
     }
 
     static final class BufferExactObserver<T, U extends Collection<? super T>> implements Observer<T>, Disposable {
-        final Observer<? super U> downstream;
+        final Observer<? super U> downstream;//被装饰的Observer
         final int count;
         final Callable<U> bufferSupplier;
         U buffer;
 
         int size;
 
-        Disposable upstream;
+        Disposable upstream;//装饰该Observer
 
         BufferExactObserver(Observer<? super U> actual, int count, Callable<U> bufferSupplier) {
             this.downstream = actual;
@@ -88,7 +88,7 @@ public final class ObservableBuffer<T, U extends Collection<? super T>> extends 
         @Override
         public void onSubscribe(Disposable d) {
             if (DisposableHelper.validate(this.upstream, d)) {
-                this.upstream = d;
+                this.upstream = d;//上游
                 downstream.onSubscribe(this);
             }
         }
@@ -180,7 +180,7 @@ public final class ObservableBuffer<T, U extends Collection<? super T>> extends 
 
         @Override
         public void onNext(T t) {
-            if (index++ % skip == 0) {
+            if (index++ % skip == 0) {//每skip个元素返回+一个buffer
                 U b;
 
                 try {

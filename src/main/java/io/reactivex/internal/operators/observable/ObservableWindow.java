@@ -20,7 +20,7 @@ import io.reactivex.*;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.internal.disposables.DisposableHelper;
 import io.reactivex.subjects.UnicastSubject;
-
+/***/
 public final class ObservableWindow<T> extends AbstractObservableWithUpstream<T, Observable<T>> {
     final long count;
     final long skip;
@@ -47,13 +47,13 @@ public final class ObservableWindow<T> extends AbstractObservableWithUpstream<T,
     implements Observer<T>, Disposable, Runnable {
 
         private static final long serialVersionUID = -7481782523886138128L;
-        final Observer<? super Observable<T>> downstream;
+        final Observer<? super Observable<T>> downstream;//下游 Observable,构成Observer链
         final long count;
         final int capacityHint;
 
         long size;
 
-        Disposable upstream;
+        Disposable upstream;//上游Disposable
 
         UnicastSubject<T> window;
 

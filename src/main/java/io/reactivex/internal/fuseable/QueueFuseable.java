@@ -13,7 +13,7 @@
 
 package io.reactivex.internal.fuseable;
 
-/**
+/**    <p>融合模式</p>
  * Represents a SimpleQueue plus the means and constants for requesting a fusion mode.
  * @param <T> the value type returned by the SimpleQueue.poll()
  */

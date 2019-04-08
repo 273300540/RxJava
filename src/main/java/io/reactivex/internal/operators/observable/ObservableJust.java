@@ -17,7 +17,7 @@ import io.reactivex.*;
 import io.reactivex.internal.fuseable.ScalarCallable;
 import io.reactivex.internal.operators.observable.ObservableScalarXMap.ScalarDisposable;
 
-/**
+/**    <p>表示一个常量标量值</p>
  * Represents a constant scalar value.
  * @param <T> the value type
  */

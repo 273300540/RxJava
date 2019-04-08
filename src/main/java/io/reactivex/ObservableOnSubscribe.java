@@ -14,7 +14,7 @@ package io.reactivex;
 
 import io.reactivex.annotations.*;
 
-/**
+/**    <p>function interface,持有subscribe方法,接受ObservableEmitter实例允许推送event</p>
  * A functional interface that has a {@code subscribe()} method that receives
  * an instance of an {@link ObservableEmitter} instance that allows pushing
  * events in a cancellation-safe manner.
@@ -23,7 +23,7 @@ import io.reactivex.annotations.*;
  */
 public interface ObservableOnSubscribe<T> {
 
-    /**
+    /**    <p>Observer subscribes 之后被调用</p>
      * Called for each Observer that subscribes.
      * @param emitter the safe emitter instance, never null
      * @throws Exception on error

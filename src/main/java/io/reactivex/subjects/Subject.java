@@ -16,7 +16,7 @@ package io.reactivex.subjects;
 import io.reactivex.*;
 import io.reactivex.annotations.*;
 
-/**
+/**    <p>同时表示Observer和Observable,允许广播从一个source的events到multiple Observer</p>
  * Represents an {@link Observer} and an {@link Observable} at the same time, allowing
  * multicasting events from a single source to multiple child {@code Observer}s.
  * <p>

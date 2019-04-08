@@ -926,7 +926,7 @@ public final class RxJavaPlugins {
         return subscriber;
     }
 
-    /**
+    /**    <p>调用预定的hook函数</p>
      * Calls the associated hook function.
      * @param <T> the value type
      * @param source the hook's input value
@@ -1040,7 +1040,7 @@ public final class RxJavaPlugins {
         return source;
     }
 
-    /**
+    /**    <p>调用对应的hook function</p>
      * Calls the associated hook function.
      * @param <T> the value type
      * @param source the hook's input value

@@ -25,7 +25,7 @@ import io.reactivex.schedulers.SchedulerRunnableIntrospection;
 
 import java.util.concurrent.TimeUnit;
 
-/**
+/**    <p>Scheduler 是一个对象,提供api用于调度以Runnables形式提供的工作单元,在指定的时间延迟之后或定期执行，并且表示在异步边界上的抽象，以确保无延迟地执行（有效地尽快）</p>
  * A {@code Scheduler} is an object that specifies an API for scheduling
  * units of work provided in the form of {@link Runnable}s to be
  * executed without delay (effectively as soon as possible), after a specified time delay or periodically
@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * You can get various standard, RxJava-specific instances of this class via
  * the static methods of the {@link io.reactivex.schedulers.Schedulers} utility class.
- * <p>
+ * <p>Worker它允许以隔离方式调度多个Runnable任务</p><p>
  * The so-called {@link Worker}s of a {@code Scheduler} can be created via the {@link #createWorker()} method which allow the scheduling
  * of multiple {@link Runnable} tasks in an isolated manner. {@code Runnable} tasks scheduled on a {@code Worker} are guaranteed to be
  * executed sequentially and in a non-overlapping fashion. Non-delayed {@code Runnable} tasks are guaranteed to execute in a

@@ -14,7 +14,7 @@ package io.reactivex;
 
 import io.reactivex.annotations.NonNull;
 
-/**
+/**    <p>用于发射push风格的基础接口</p>
  * Base interface for emitting signals in a push-fashion in various generator-like source
  * operators (create, generate).
  *

@@ -34,7 +34,7 @@ import io.reactivex.observers.*;
 import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.*;
 
-/**
+/**    <p>Observable class是非背压</p>
  * The Observable class is the non-backpressured, optionally multi-valued base reactive class that
  * offers factory methods, intermediate operators and the ability to consume synchronous
  * and/or asynchronous reactive dataflows.
@@ -89,7 +89,7 @@ import io.reactivex.schedulers.*;
  * // the sequence can now be disposed via dispose()
  * d.dispose();
  * </code></pre>
- * 
+ *      <p>静态创建方法都是底层方法,会触发onNext</p>
  * @param <T>
  *            the type of the items emitted by the Observable
  * @see Flowable
@@ -12083,7 +12083,7 @@ public abstract class Observable<T> implements ObservableSource<T> {
     public final void subscribe(Observer<? super T> observer) {
         ObjectHelper.requireNonNull(observer, "observer is null");
         try {
-            observer = RxJavaPlugins.onSubscribe(this, observer);
+            observer = RxJavaPlugins.onSubscribe(this, observer);//对每个Observer拦截
 
             ObjectHelper.requireNonNull(observer, "The RxJavaPlugins.onSubscribe hook returned a null Observer. Please change the handler provided to RxJavaPlugins.setOnObservableSubscribe for invalid null returns. Further reading: https://github.com/ReactiveX/RxJava/wiki/Plugins");
 
@@ -12102,7 +12102,7 @@ public abstract class Observable<T> implements ObservableSource<T> {
         }
     }
 
-    /**
+    /**    <p>操作直接实现该方法执行必要的业务操作,处理入参Observer,不再需要对Observable调用plugin hook</p>
      * Operator implementations (both source and intermediate) should implement this method that
      * performs the necessary business logic and handles the incoming {@link Observer}s.
      * <p>There is no need to call any of the plugin hooks on the current {@code Observable} instance or
